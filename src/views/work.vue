@@ -324,6 +324,8 @@ export default {
       console.log("未完成", this.list2);
     },
     add() {
+      this.title = '';
+      this.time = '';
       this.isEdit = !this.isEdit;
     },
     async onSubmit(values) {

@@ -37,7 +37,7 @@
         <van-pagination
           v-model="currentPage"
           :show-page-size="size"
-          :page-count="Math.ceil(count / size)"
+          :page-count="pageCount"
           force-ellipses
           @change="pageChange"
         />
@@ -66,6 +66,11 @@ export default {
       isLoading: true,
     };
   },
+  computed:{
+    pageCount(){
+      return Math.ceil(this.count / this.size);
+    }
+  },
   async mounted() {
     await this.getDailyList();
     this.isLoading = !this.isLoading;
@@ -93,6 +98,7 @@ export default {
     async getDailyList(p) {
       const resp0 = await axios.get("/api/query/queryDailyCount");
       this.count = resp0.data.data[0].count;
+      console.log(this.count)
       let that = this;
       const resp = await axios.get("/api/query/queryDaily", {
         params: {

@@ -13,7 +13,7 @@
           :deletable="true"
         />
       </div>
-      <div class="username" style="margin-top: 8px; color: blue">
+      <div class="username" style="margin-top: 8px;margin-left:20px; color: blue">
         {{ username }},欢迎您！
       </div>
     </div>
@@ -55,10 +55,10 @@
             <span v-if="!isEdit">{{ myInfo.age }}</span>
             <van-field
               v-else
-              v-model="myInfo.age"
+              v-model.number="myInfo.age"
               name="age"
               placeholder="请输入年龄"
-              :rules="[{ pattern: ageP, message: '请填写正确年龄' }]"
+              :rules="[{ required:true, message: '请填写正确年龄' }]"
             />
           </van-cell>
           <van-cell
@@ -113,7 +113,7 @@
               v-model="myInfo.address"
               name="address"
               placeholder="请输入地址"
-              :rules="[{ required: true, message: '请填写地址' }]"
+              :rules="[{ required: true, message: '请填写正确地址' }]"
             />
           </van-cell>
           <van-cell
@@ -124,11 +124,11 @@
               v-model="myInfo.birth"
               name="birth "
               placeholder="请输入生日"
-              :rules="[{ pattern: birthP, message: '请填写生日' }]"
+              :rules="[{ pattern: birthP, message: '请填写正确生日' }]"
             />
           </van-cell>
           <van-cell v-if="isEdit"><van-button size="small"  native-type="submit" style="margin-left:100px;width:150px" type="primary">确定修改</van-button></van-cell>
-          <van-cell><van-button size="small" style="display:flex;width:150px;justify-content:center;margin-left:100px" type="danger" @click="loginOut">退出</van-button></van-cell>
+          <van-cell style="background:red;padding-left:10px;padding-right:10px;box-sizing:border-box"><div style="display:flex;width:150px;color:#fff;justify-content:center;margin-left:100px"  @click="loginOut">退出</div></van-cell>
           <van-cell style="visibility:hidden;"><van-button size="small" type="primary">隐藏</van-button></van-cell>
 
         </van-list>
@@ -185,13 +185,18 @@ export default {
   async mounted() {
     this.getUsers();
     this.getMyInfo();
+    console.log('this.file',this.file)
   },
   methods: {
     async loginOut(){
       const resp = await axios.get('/api/loginOut');
       if(resp.data.code == 200){
         window.localStorage.removeItem('token');
-        this.$router.replace('/')
+        window.localStorage.removeItem('id');
+        window.localStorage.removeItem('create_time');
+        window.localStorage.removeItem('avatarUrl');
+
+        this.$router.push('/')
       }
     },
     goEdit(){
@@ -209,8 +214,8 @@ export default {
     },
     async getMyInfo() {
       const resp = await axios.get("/api/query/queryMyInfo");
-      if (resp.data.code == 200) {
-        resp.data.data[0].birth = resp.data.data[0].birth.slice(0, 10);
+      if (resp.data.code == 200 && resp.data.data.length>0) {
+        resp.data.data[0].birth = resp.data.data[0].birth?resp.data.data[0].birth.slice(0, 10):'';
         Object.assign(this.myInfo, resp.data.data[0]);
         console.log("this.myinfo", this.myInfo);
       }

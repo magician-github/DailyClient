@@ -20,9 +20,9 @@
         <a
           v-if="isLogin"
           href="#"
-          @click="isLogin = false"
+          @click="isLogin = !isLogin"
           style="margin-left: 20px"
-          >去注册</a
+          >{{!isLogin?'去登录':'去注册'}}</a
         >
         <div v-else @click="goReg" style="margin-left: 20px;color:blue"
           >去注册</div
@@ -79,6 +79,7 @@ export default {
           window.localStorage.setItem('avatarUrl',resp.data.data.avatar_url);
           window.localStorage.setItem('time',resp.data.data.create_time);
           window.localStorage.setItem('token',resp.token);
+          window.localStorage.setItem('id',resp.data.data.id,)
           this.$router.replace('/home/time');
         }
       } else {
