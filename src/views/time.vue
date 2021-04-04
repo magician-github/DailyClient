@@ -2,7 +2,7 @@
   <div>
     <div class="header">
       <h1 style="color:#fff">今日名言</h1>
-      <div style="height:60px;font-size:18px;background:#fff;border-radius:10px;padding:10px;box-shadow:5px 5px 10px #ddd">{{ (everyDay||'路漫漫其修远兮，吾将上下而求索')+'。'  }}</div>
+      <div style="height:60px;font-size:18px;background:#fff;border-radius:10px;padding:10px;box-shadow:5px 5px 10px #ddd">{{ (everyDay) }}</div>
       <img
         src="../assets/kz.jpg"
         style="border-radius:5px; width: 70px; height: 60px; float: right; margin-right: 30px;margin-top:2px;"

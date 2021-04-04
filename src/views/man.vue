@@ -46,8 +46,8 @@
     <van-loading
       v-if="isLoading"
       type="spinner"
-      color="#1989fa"
-      style="position: fixed; top: 30%; left: 45%"
+      color="red"
+      style="width:100px;position: fixed; top: 30%; left: 45%"
     />
   </div>
 </template>

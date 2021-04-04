@@ -7,24 +7,27 @@
           <van-icon name="underway-o" />
         </template>
       </van-tabbar-item>
-      <van-tabbar-item replace to="/home/work"
-        >
+      <van-tabbar-item replace to="/home/work">
         <span>任务</span>
         <template #icon="props">
           <van-icon name="fire-o" />
         </template>
-        </van-tabbar-item
-      >
-      <van-tabbar-item replace to="/home/create"
-        >
+      </van-tabbar-item>
+      <van-tabbar-item replace to="/home/create">
         <span>创作</span>
-        <template #icon="props">
-          <van-icon name="comment-circle-o" />
-        </template></van-tabbar-item
-      >
+        <template #icon="props"> <van-icon name="comment-circle-o" /> </template
+      ></van-tabbar-item>
+
       <van-tabbar-item replace to="/home/man" icon="home-o"
         >管理</van-tabbar-item
       >
+
+      <van-tabbar-item replace to="/home/news">
+        <span>新闻</span>
+        <template #icon="props">
+          <van-icon name="browsing-history-o" />
+        </template>
+      </van-tabbar-item>
       <van-tabbar-item replace to="/home/me" icon="friends-o"
         >我的</van-tabbar-item
       >
@@ -33,7 +36,7 @@
 </template>
 
 <script>
-import { Icon } from 'vant';
+import { Icon } from "vant";
 export default {};
 </script>
 

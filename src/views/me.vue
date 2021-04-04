@@ -4,6 +4,7 @@
       <div class="avatar">
         <!-- <img v-if="avatar" @click="changeAvatar" :src="'http://localhost:9000' + avatar" alt="头像" /> -->
         <van-uploader
+        style="border-radius:50%"
           :show-upload="showUpload"
           :after-read="afterRead"
           :before-read="beforeRead"
@@ -13,7 +14,7 @@
           :deletable="true"
         />
       </div>
-      <div class="username" style="margin-top: 8px;margin-left:20px; color: blue">
+      <div class="username" style="margin-top: 8px;margin-left:28px; color: blue">
         {{ username }},欢迎您！
       </div>
     </div>
@@ -215,6 +216,7 @@ export default {
     async getMyInfo() {
       const resp = await axios.get("/api/query/queryMyInfo");
       if (resp.data.code == 200 && resp.data.data.length>0) {
+        Toast.success('获取用户信息成功')
         resp.data.data[0].birth = resp.data.data[0].birth?resp.data.data[0].birth.slice(0, 10):'';
         Object.assign(this.myInfo, resp.data.data[0]);
         console.log("this.myinfo", this.myInfo);

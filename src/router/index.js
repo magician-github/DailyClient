@@ -7,7 +7,7 @@ const routes = [
   {
     path:'/',
     name:'home',
-    redirect:'/home/time'
+    redirect:'/loginAndReg/login'
     // component:()=>import(/* webpackChunkName:'loginReg' */ '@/views/loginAndReg'),
   },
   {
@@ -37,6 +37,18 @@ const routes = [
         path:'man',
         name:'man',
         component:()=>import(/* webpackChunkName:'faxian' */ '@/views/man')
+    
+      },
+      {
+        path:'news',
+        name:'news',
+        component:()=>import(/* webpackChunkName:'news' */ '@/views/news')
+    
+      },
+      {
+        path:'newsDetail',
+        name:'news',
+        component:()=>import(/* webpackChunkName:'news' */ '@/views/newsDetail')
     
       },
       {
