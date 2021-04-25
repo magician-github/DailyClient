@@ -129,6 +129,7 @@
             />
           </van-cell>
           <van-cell v-if="isEdit"><van-button size="small"  native-type="submit" style="margin-left:100px;width:150px" type="primary">确定修改</van-button></van-cell>
+          <van-cell style="background:green;padding-left:10px;padding-right:10px;box-sizing:border-box;margin-bottom:5px"><div style="display:flex;width:150px;color:#fff;justify-content:center;margin-left:100px"  @click="goUpdatePwd">修改密码</div></van-cell>
           <van-cell style="background:red;padding-left:10px;padding-right:10px;box-sizing:border-box"><div style="display:flex;width:150px;color:#fff;justify-content:center;margin-left:100px"  @click="loginOut">退出</div></van-cell>
           <van-cell style="visibility:hidden;"><van-button size="small" type="primary">隐藏</van-button></van-cell>
 
@@ -189,6 +190,9 @@ export default {
     console.log('this.file',this.file)
   },
   methods: {
+    goUpdatePwd(){
+      this.$router.push('/updatePwd');
+    },
     async loginOut(){
       const resp = await axios.get('/api/loginOut');
       if(resp.data.code == 200){
@@ -197,7 +201,7 @@ export default {
         window.localStorage.removeItem('create_time');
         window.localStorage.removeItem('avatarUrl');
 
-        this.$router.push('/')
+        this.$router.push('/').catch(err=>{});
       }
     },
     goEdit(){

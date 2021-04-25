@@ -293,23 +293,12 @@ export default {
       this.utime = newItem.time;
       this.ustatus = newItem.status;
     },
-    // onClickTab(e) {
-    //   console.log(e)
-    //   switch (e) {
-    //     case 0:
-    //       this.curList = this.list;
-    //     case 1:
-    //       this.curList = this.list1;
-    //     case 2:
-    //       this.curList = this.list2;
-    //   }
-    // },
     async getWork() {
       const resp = await axios.get("/api/query/queryWork");
       this.list = resp.data.data.map((it, index) => {
         return {
           id: it.id,
-          time: it.time.slice(0, 10),
+          time: it.time.slice(0, 9)+(parseInt(it.time[9])+1),
           title: it.title,
           status: it.status,
         };
@@ -319,9 +308,7 @@ export default {
         console.log(it.status);
         return it.status == "已完成";
       });
-      console.log(this.list1, "完成");
       this.list2 = this.list.filter((it) => it.status == "未完成");
-      console.log("未完成", this.list2);
     },
     add() {
       this.title = '';

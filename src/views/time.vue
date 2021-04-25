@@ -6,14 +6,10 @@
       <img
         src="../assets/kz.jpg"
         style="border-radius:5px; width: 70px; height: 60px; float: right; margin-right: 30px;margin-top:2px;"
-        alt="孔子"
+        alt="古人"
       />
     </div>
-    <!-- <div class="clock">
-      <div class="second"></div>
-      <div class="minute"></div>
-      <div class="hour"></div>
-    </div> -->
+
     <div class="clock" id="clock">
       <!--圆心-->
       <div class="origin"></div>
@@ -23,21 +19,6 @@
       <div class="clock-line second-line" id="second-line"></div>
     </div>
     <van-form @submit="onSubmit" v-if="isEdit">
-      <!-- <van-field
-        v-model="newEveryDay"
-        name="everyday"
-        label="每日一句"
-        placeholder="每日一句"
-        :rules="[{ required: false, message: '请填写每日一句' }]"
-      /> -->
-      <!-- <div style="margin: 5px; display: flex; justify-content: space-around">
-        <van-button round inline-block type="info" native-type="submit"
-          >提交</van-button
-        >
-        <van-button round inline-block type="info" @click="add"
-          >返回</van-button
-        >
-      </div> -->
     </van-form>
     <van-button
       v-else

@@ -83,6 +83,19 @@ const routes = [
       msg:'这是路由元信息'
     }
   },
+  {
+    path:'/updatePwd',
+    name:'updatePwd',
+    component:()=>import(/* webpackChunkName:'updatePwd' */ '@/views/updatePwd'),
+    meta:{
+      msg:'这是路由元信息'
+    }
+  },
+  {
+    path:'/*',
+    name:'notFound',
+    component:()=>import(/* webpackChunkName:'notFound' */ '@/views/notFound'),
+  },
   
 ];
 

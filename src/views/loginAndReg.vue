@@ -72,7 +72,7 @@ export default {
         // console.log(typeof respJson,respJson)
         // const resp = JSON.parse(respJson)
         if(resp.data.meta.status == 400){
-          Toast.fail('失败');
+          Toast.fail('登录失败，用户名或者密码错误');
 
         } else {
           Toast.success(resp.data.meta.msg);
